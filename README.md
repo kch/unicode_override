@@ -3,8 +3,8 @@ UnicodeOverride
 
 UnicodeOverride is a plugin for Rails 2.3.x that ensures UTF-8 strings are
 always returned with their encoding set to UTF-8. This allows your application
-to be moved to ruby 1.9.x theorietically seamlessly, hopefully without
-agonizing pain.
+to be moved to ruby 1.9.x theoretically seamlessly, hopefully without agonizing
+pain.
 
 For ruby 1.8.x, it does nothing, so your application will continue working
 under it.
