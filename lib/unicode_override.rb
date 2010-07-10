@@ -1,5 +1,6 @@
 module UnicodeOverride
 
+
   module String
     def force_utf8!
       return self if encoding == "UTF-8"
@@ -19,10 +20,9 @@ module UnicodeOverride
       attributes_without_unicode_override.tap { |attrs| attrs.values.select { |v| v.is_a?(String) }.each(&:force_utf8!) }
     end
   end
-  
-  
-  module ActionController
 
+
+  module ActionController
     def self.included(base)
       base.extend(ClassMethods)
       base.singleton_class.alias_method_chain :inherited, :unicode_override
@@ -37,7 +37,6 @@ module UnicodeOverride
         child.helper(unicode_override_module)
       end
     end
-
   end
 
 
