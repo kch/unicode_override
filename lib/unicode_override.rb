@@ -11,13 +11,10 @@ module UnicodeOverride
     end
   end
 
-  module ActiveRecord
-    def self.included(base)
-      base.alias_method_chain :attributes, :unicode_override
-    end
 
-    def attributes_with_unicode_override
-      attributes_without_unicode_override.tap { |attrs| attrs.values.select { |v| v.is_a?(String) }.each(&:force_utf8!) }
+  module ActiveRecord
+    def after_find
+      attributes.values.select { |v| v.is_a?(String) }.each(&:force_utf8!)
     end
   end
 
