@@ -25,8 +25,9 @@ Just Put It In Your vendor/plugins™
   Always returns `self``.
 
 • Any ActiveRecord attribute that is a string gets sent `force_utf8!`. This is
-  achieved by enveloping the `attributes` method, which all the dynamically
-  generated accessors rely on.
+  achieved by defining an `after_find` method which acts during object
+  instantiation. If you define `after_find` in your own code, be mindful of
+  this and use `alias_method_chain` if needed.
 
 • All Rails built-in helpers are enveloped. When they return a string,
   `force_utf8!` is sent to it before it's returned.
