@@ -25,7 +25,7 @@ module UnicodeOverride
 
     def self.included(base)
       base.extend(ClassMethods)
-      base.class_eval { (class << self; self; end).alias_method_chain :inherited, :unicode_override }
+      (class << base; self; end).alias_method_chain :inherited, :unicode_override
     end
 
     module ClassMethods
