@@ -22,7 +22,7 @@ Just Put It In Your vendor/plugins™
   Strings get a `force_utf8!` method. This is used internally but might be fun
   for everyone. What it does is: when a string forms a valid UTF-8 string, its
   encoding gets forced to UTF-8, otherwise the original encoding is kept.
-  Always returns `self``.
+  Always returns `self`.
 
 • Any ActiveRecord attribute that is a string gets sent `force_utf8!`. This is
   achieved by defining an `after_find` method which acts during object
