@@ -13,6 +13,10 @@ module UnicodeOverride
 
 
   module ActiveRecord
+    def self.included(base)
+      base.after_find :after_find if defined? ActiveModel # rails 3
+    end
+
     def after_find
       attributes.values.select { |v| v.is_a?(String) }.each(&:force_utf8!)
     end
